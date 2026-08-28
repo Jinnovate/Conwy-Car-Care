@@ -80,7 +80,7 @@ export default function BookingPage() {
   return (
     <main className="bookingPage">
       <header className="bookingNav shell">
-        <a className="brand logoCrop" href="/" aria-label="Back to Conwy Car Care home"><img src="/conwy-logo-full.jpg" alt="Conwy Car Care" /></a>
+        <a className="brand textBrand" href="/" aria-label="Back to Conwy Car Care home"><span>CONWY</span><small>CAR CARE</small></a>
         <a className="backLink" href="/">← Back to site</a>
       </header>
 

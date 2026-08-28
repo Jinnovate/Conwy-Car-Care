@@ -14,9 +14,7 @@ export default function Home() {
   return (
     <main>
       <nav className="nav shell" aria-label="Main navigation">
-        <a className="brand logoCrop" href="#top" aria-label="Conwy Car Care home">
-          <img src="/conwy-logo-full.jpg" alt="Conwy Car Care — Valeting and Detailing" />
-        </a>
+        <a className="brand textBrand" href="#top" aria-label="Conwy Car Care home"><span>CONWY</span><small>CAR CARE</small></a>
         <div className="navLinks"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#about">About</a></div>
         <a className="navCta" href="tel:+447301847820">Call Tyler</a>
       </nav>
@@ -25,7 +23,7 @@ export default function Home() {
         <div className="heroGlow" />
         <div className="shell heroGrid">
           <div className="heroCopy">
-            <p className="eyebrow"><span /> Mobile valeting & detailing · Conwy</p>
+            <p className="eyebrow welcomeEyebrow"><span /> Welcome to Conwy Car Care</p>
             <h1>Your car.<br/><em>Reimagined.</em></h1>
             <p className="lead">Enthusiast-led car care with an uncompromising eye for detail. We bring the studio finish to your driveway.</p>
             <div className="heroActions"><a className="button primary" href="/book">Book your valet <b>↗</b></a><a className="textLink" href="#services">Explore services <span>↓</span></a></div>
@@ -57,11 +55,11 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="section owner" id="about"><div className="shell ownerGrid"><div><p className="eyebrow"><span /> Meet the owner</p><h2>Tyler<br/><em>Channer.</em></h2></div><div><p className="quote">“I&apos;m a car enthusiast first. Conwy Car Care exists to give every customer the finish I&apos;d want on my own vehicle.”</p><p className="ownerText">No rushed handovers, no conveyor-belt cleans. Tyler personally looks after your car from first call to final walk-around—bringing honest advice and a proper standard of care to every booking.</p><a className="textLink ownerLink" href="tel:+447301847820">Speak to Tyler <span>↗</span></a></div></div></section>
+      <section className="section owner" id="about"><div className="shell ownerGrid"><div><p className="eyebrow"><span /> Meet the owner</p><h2>Tyler<br/><em>Channer.</em></h2></div><div><p className="quote">“I&apos;m a car enthusiast first. Conwy Car Care exists to give every customer the finish I&apos;d want on my own vehicle.”</p><p className="ownerText">No rushed handovers, no conveyor-belt cleans. Tyler personally looks after your car from first call to final walk-around—bringing honest advice and a proper standard of care to every booking.</p><p className="ownerLocation">Based in the heart of the Conwy Valley, serving customers locally and available for specialist bookings throughout the UK.</p><a className="textLink ownerLink" href="tel:+447301847820">Speak to Tyler <span>↗</span></a></div></div></section>
 
       <section className="book"><div className="shell bookInner"><p>READY WHEN YOU ARE</p><h2>Give your car the care<br/>it <em>deserves.</em></h2><a className="button yellow" href="/book">Choose your valet <b>↗</b></a></div></section>
 
-      <footer><div className="shell footerGrid"><div className="brand logoCrop footerBrand"><img src="/conwy-logo-full.jpg" alt="Conwy Car Care — Valeting and Detailing" /></div><div><small>SERVICES</small><a href="#services">Mini valet</a><a href="#services">Full valet</a><a href="#services">Detailing</a></div><div><small>CONTACT</small><a href="tel:+447301847820">+44 7301 847820</a><span>Conwy & surrounding areas</span></div><div className="footerEnd"><span>Owner operated by<br/>Tyler Channer</span><a href="#top">BACK TO TOP ↑</a></div></div><div className="shell copyright">© 2026 CONWY CAR CARE <span>VALETING & DETAILING</span></div></footer>
+      <footer><div className="shell footerGrid"><div className="brand textBrand footerBrand"><span>CONWY</span><small>CAR CARE</small></div><div><small>SERVICES</small><a href="#services">Mini valet</a><a href="#services">Full valet</a><a href="#services">Detailing</a></div><div><small>CONTACT</small><a href="tel:+447301847820">+44 7301 847820</a><span>Conwy Valley · UK-wide by arrangement</span></div><div className="footerEnd"><span>Owner operated by<br/>Tyler Channer</span><a href="#top">BACK TO TOP ↑</a></div></div><div className="shell copyright">© 2026 CONWY CAR CARE <span>VALETING & DETAILING</span></div></footer>
       <a className="mobileCall" href="/book">Book your valet <span>↗</span></a>
     </main>
   );

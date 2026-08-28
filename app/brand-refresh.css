@@ -1,0 +1,70 @@
+.textBrand {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  width: auto;
+  height: auto;
+  min-width: 145px;
+  overflow: visible;
+  background: transparent;
+}
+
+.textBrand > span {
+  color: #f6f8fb;
+  font-size: 25px;
+  font-weight: 900;
+  line-height: 0.82;
+  letter-spacing: 0.02em;
+}
+
+.textBrand > small {
+  display: block;
+  margin-top: 9px;
+  color: var(--blue);
+  font-size: 8px;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: 0.52em;
+}
+
+.welcomeEyebrow {
+  color: #d9e2ed;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+}
+
+.ownerLocation {
+  max-width: 600px;
+  margin: 22px 0 0;
+  padding: 18px 0 18px 22px;
+  border-left: 3px solid var(--yellow);
+  color: #f3f7fc;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.65;
+}
+
+.textBrand.footerBrand {
+  width: auto;
+  height: auto;
+  min-width: 190px;
+  align-self: start;
+}
+
+.textBrand.footerBrand > span {
+  font-size: 34px;
+}
+
+@media (max-width: 480px) {
+  .textBrand {
+    min-width: 120px;
+  }
+
+  .textBrand > span {
+    font-size: 21px;
+  }
+
+  .textBrand > small {
+    font-size: 7px;
+  }
+}
