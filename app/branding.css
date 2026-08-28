@@ -1,0 +1,43 @@
+:root {
+  --yellow: #dfa800;
+}
+
+.logoCrop {
+  --logo-width: 152px;
+  display: block;
+  width: var(--logo-width);
+  height: 76px;
+  overflow: hidden;
+  position: relative;
+  flex: 0 0 auto;
+  background: #000;
+}
+
+.logoCrop img {
+  display: block;
+  width: var(--logo-width);
+  height: auto;
+  max-width: none;
+  transform: translateY(calc(var(--logo-width) * -0.185));
+  filter: contrast(1.04);
+}
+
+.footerBrand {
+  --logo-width: 218px;
+  width: 218px;
+  height: 112px;
+}
+
+@media (max-width: 480px) {
+  .logoCrop {
+    --logo-width: 128px;
+    width: 128px;
+    height: 65px;
+  }
+
+  .footerBrand {
+    --logo-width: 190px;
+    width: 190px;
+    height: 98px;
+  }
+}

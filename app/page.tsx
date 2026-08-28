@@ -14,7 +14,9 @@ export default function Home() {
   return (
     <main>
       <nav className="nav shell" aria-label="Main navigation">
-        <a className="brand" href="#top" aria-label="Conwy Car Care home"><span>CONWY</span><small>CAR CARE</small></a>
+        <a className="brand logoCrop" href="#top" aria-label="Conwy Car Care home">
+          <img src="/conwy-logo-full.jpg" alt="Conwy Car Care — Valeting and Detailing" />
+        </a>
         <div className="navLinks"><a href="#services">Services</a><a href="#pricing">Pricing</a><a href="#about">About</a></div>
         <a className="navCta" href="tel:+447301847820">Call Tyler</a>
       </nav>
@@ -59,7 +61,7 @@ export default function Home() {
 
       <section className="book"><div className="shell bookInner"><p>READY WHEN YOU ARE</p><h2>Give your car the care<br/>it <em>deserves.</em></h2><a className="button yellow" href="tel:+447301847820">Call +44 7301 847820 <b>↗</b></a></div></section>
 
-      <footer><div className="shell footerGrid"><div className="brand footerBrand"><span>CONWY</span><small>CAR CARE</small></div><div><small>SERVICES</small><a href="#services">Mini valet</a><a href="#services">Full valet</a><a href="#services">Detailing</a></div><div><small>CONTACT</small><a href="tel:+447301847820">+44 7301 847820</a><span>Conwy & surrounding areas</span></div><div className="footerEnd"><span>Owner operated by<br/>Tyler Channer</span><a href="#top">BACK TO TOP ↑</a></div></div><div className="shell copyright">© 2026 CONWY CAR CARE <span>VALETING & DETAILING</span></div></footer>
+      <footer><div className="shell footerGrid"><div className="brand logoCrop footerBrand"><img src="/conwy-logo-full.jpg" alt="Conwy Car Care — Valeting and Detailing" /></div><div><small>SERVICES</small><a href="#services">Mini valet</a><a href="#services">Full valet</a><a href="#services">Detailing</a></div><div><small>CONTACT</small><a href="tel:+447301847820">+44 7301 847820</a><span>Conwy & surrounding areas</span></div><div className="footerEnd"><span>Owner operated by<br/>Tyler Channer</span><a href="#top">BACK TO TOP ↑</a></div></div><div className="shell copyright">© 2026 CONWY CAR CARE <span>VALETING & DETAILING</span></div></footer>
       <a className="mobileCall" href="tel:+447301847820">Call to book <span>↗</span></a>
     </main>
   );
