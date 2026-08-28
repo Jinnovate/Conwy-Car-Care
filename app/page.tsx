@@ -1,7 +1,7 @@
 const services = [
-  { n: '01', title: 'Mini Valet', copy: 'The smart maintenance clean. Exterior wash, wheel clean, interior vacuum and a crisp final finish.', price: 'from £60', icon: '↗' },
-  { n: '02', title: 'Full Valet', copy: 'A complete inside-and-out reset, restoring the details that make your car feel properly cared for.', price: 'from £80', icon: '✦' },
-  { n: '03', title: 'Detailing', copy: 'Deep decontamination and precision finishing for paintwork with clarity, gloss and lasting protection.', price: 'from £170', icon: '◇' },
+  { id: 'mini', n: '01', title: 'Mini Valet', copy: 'The smart maintenance clean. Exterior wash, wheel clean, interior vacuum and a crisp final finish.', price: 'from £60', icon: '↗' },
+  { id: 'full', n: '02', title: 'Full Valet', copy: 'A complete inside-and-out reset, restoring the details that make your car feel properly cared for.', price: 'from £80', icon: '✦' },
+  { id: 'detail', n: '03', title: 'Detailing', copy: 'Deep decontamination and precision finishing for paintwork with clarity, gloss and lasting protection.', price: 'from £170', icon: '◇' },
 ];
 
 const pricing = [
@@ -28,7 +28,7 @@ export default function Home() {
             <p className="eyebrow"><span /> Mobile valeting & detailing · Conwy</p>
             <h1>Your car.<br/><em>Reimagined.</em></h1>
             <p className="lead">Enthusiast-led car care with an uncompromising eye for detail. We bring the studio finish to your driveway.</p>
-            <div className="heroActions"><a className="button primary" href="tel:+447301847820">Book your valet <b>↗</b></a><a className="textLink" href="#services">Explore services <span>↓</span></a></div>
+            <div className="heroActions"><a className="button primary" href="/book">Book your valet <b>↗</b></a><a className="textLink" href="#services">Explore services <span>↓</span></a></div>
             <div className="trust"><b>5.0</b><span className="stars">★★★★★</span><small>Local, owner-operated care</small></div>
           </div>
           <div className="heroVisual">
@@ -42,7 +42,7 @@ export default function Home() {
       <section className="section services" id="services">
         <div className="shell">
           <div className="sectionHead"><div><p className="eyebrow"><span /> What we do</p><h2>Care at every<br/><em>level.</em></h2></div><p>From a sharp weekly refresh to a complete paintwork transformation, every service gets the same enthusiast&apos;s eye.</p></div>
-          <div className="serviceGrid">{services.map((item) => <article className="serviceCard" key={item.n}><div className="cardTop"><small>{item.n}</small><b>{item.icon}</b></div><h3>{item.title}</h3><p>{item.copy}</p><div className="cardFoot"><strong>{item.price}</strong><a href="tel:+447301847820" aria-label={`Book ${item.title}`}>BOOK <span>→</span></a></div></article>)}</div>
+          <div className="serviceGrid">{services.map((item) => <article className="serviceCard" key={item.n}><div className="cardTop"><small>{item.n}</small><b>{item.icon}</b></div><h3>{item.title}</h3><p>{item.copy}</p><div className="cardFoot"><strong>{item.price}</strong><a href={`/book?service=${item.id}`} aria-label={`Book ${item.title}`}>SELECT <span>→</span></a></div></article>)}</div>
         </div>
       </section>
 
@@ -59,10 +59,10 @@ export default function Home() {
 
       <section className="section owner" id="about"><div className="shell ownerGrid"><div><p className="eyebrow"><span /> Meet the owner</p><h2>Tyler<br/><em>Channer.</em></h2></div><div><p className="quote">“I&apos;m a car enthusiast first. Conwy Car Care exists to give every customer the finish I&apos;d want on my own vehicle.”</p><p className="ownerText">No rushed handovers, no conveyor-belt cleans. Tyler personally looks after your car from first call to final walk-around—bringing honest advice and a proper standard of care to every booking.</p><a className="textLink ownerLink" href="tel:+447301847820">Speak to Tyler <span>↗</span></a></div></div></section>
 
-      <section className="book"><div className="shell bookInner"><p>READY WHEN YOU ARE</p><h2>Give your car the care<br/>it <em>deserves.</em></h2><a className="button yellow" href="tel:+447301847820">Call +44 7301 847820 <b>↗</b></a></div></section>
+      <section className="book"><div className="shell bookInner"><p>READY WHEN YOU ARE</p><h2>Give your car the care<br/>it <em>deserves.</em></h2><a className="button yellow" href="/book">Choose your valet <b>↗</b></a></div></section>
 
       <footer><div className="shell footerGrid"><div className="brand logoCrop footerBrand"><img src="/conwy-logo-full.jpg" alt="Conwy Car Care — Valeting and Detailing" /></div><div><small>SERVICES</small><a href="#services">Mini valet</a><a href="#services">Full valet</a><a href="#services">Detailing</a></div><div><small>CONTACT</small><a href="tel:+447301847820">+44 7301 847820</a><span>Conwy & surrounding areas</span></div><div className="footerEnd"><span>Owner operated by<br/>Tyler Channer</span><a href="#top">BACK TO TOP ↑</a></div></div><div className="shell copyright">© 2026 CONWY CAR CARE <span>VALETING & DETAILING</span></div></footer>
-      <a className="mobileCall" href="tel:+447301847820">Call to book <span>↗</span></a>
+      <a className="mobileCall" href="/book">Book your valet <span>↗</span></a>
     </main>
   );
 }
