@@ -1,0 +1,9 @@
+.choiceGrid label > b,
+.total strong {
+  color: var(--yellow);
+  text-shadow: 0 0 22px rgb(223 168 0 / 18%);
+}
+
+.choiceGrid label.selected > b {
+  color: #f4c31d;
+}

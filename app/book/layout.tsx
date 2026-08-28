@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import './booking.css';
+import './price-accent.css';
 
 export const metadata: Metadata = {
   title: 'Book Your Valet | Conwy Car Care',
