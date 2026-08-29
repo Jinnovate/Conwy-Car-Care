@@ -20,6 +20,9 @@ const prices: Record<string, Record<string, number>> = {
   detail: { small: 170, medium: 180, large: 190 },
 };
 
+// Preserved for re-enabling the full calendar flow when live scheduling is ready.
+const SCHEDULING_ENABLED = false;
+
 function makeDates() {
   const dates: { value: string; day: string; date: string; long: string }[] = [];
   const cursor = new Date();
@@ -60,21 +63,31 @@ export default function BookingPage() {
 
   function submitBooking(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
-    const message = [
-      'Hi Tyler, I would like to request a booking with Conwy Car Care.',
-      '',
-      `Name: ${name}`,
-      `Service: ${selectedService?.name}`,
-      `Vehicle size: ${selectedSize?.name}`,
-      `Vehicle: ${vehicle}`,
-      `Preferred date: ${selectedDate?.long}`,
-      `Preferred time: ${time}`,
-      `Postcode: ${postcode}`,
-      `Quoted price: £${price}`,
-      '',
-      'Please confirm availability and payment details. Thanks!',
-    ].join('\n');
-    window.location.href = `sms:+447301847820?&body=${encodeURIComponent(message)}`;
+    const message = SCHEDULING_ENABLED
+      ? [
+          'Hi Tyler, I would like to request a booking with Conwy Car Care.',
+          '',
+          `Name: ${name}`,
+          `Service: ${selectedService?.name}`,
+          `Vehicle size: ${selectedSize?.name}`,
+          `Vehicle: ${vehicle}`,
+          `Preferred date: ${selectedDate?.long}`,
+          `Preferred time: ${time}`,
+          `Postcode: ${postcode}`,
+          `Quoted price: £${price}`,
+          '',
+          'Please confirm availability and payment details. Thanks!',
+        ].join('\n')
+      : [
+          'Hi Tyler, I was wondering when you have availability to clean my vehicle.',
+          '',
+          `Service: ${selectedService?.name}`,
+          `Vehicle size: ${selectedSize?.name}`,
+          `Estimated price: £${price}`,
+          '',
+          'Please let me know your next available dates. Thanks!',
+        ].join('\n');
+    window.open(`https://wa.me/447301847820?text=${encodeURIComponent(message)}`, '_blank', 'noopener,noreferrer');
   }
 
   return (
@@ -87,7 +100,7 @@ export default function BookingPage() {
       <div className="bookingHero shell">
         <p className="eyebrow"><span /> Book your valet</p>
         <h1>Choose your<br/><em>finish.</em></h1>
-        <p>Select your service, vehicle and preferred slot. Tyler will personally confirm availability before payment.</p>
+        <p>Select your service and vehicle size, then message Tyler directly on WhatsApp to arrange a convenient date.</p>
       </div>
 
       <form className="bookingGrid shell" onSubmit={submitBooking}>
@@ -102,25 +115,26 @@ export default function BookingPage() {
             <div className="choiceGrid sizeChoices">{sizes.map((item) => <label className={size === item.id ? 'selected' : ''} key={item.id}><input type="radio" name="size" value={item.id} checked={size === item.id} onChange={() => setSize(item.id)} required/><span><strong>{item.name}</strong><small>{item.note}</small></span>{service && <b>£{prices[service][item.id]}</b>}</label>)}</div>
           </fieldset>
 
-          <fieldset>
-            <legend><b>03</b><span>Pick a preferred date</span></legend>
-            <div className="dateScroller">{dates.map((item) => <label className={date === item.value ? 'selected' : ''} key={item.value}><input type="radio" name="date" value={item.value} checked={date === item.value} onChange={() => setDate(item.value)} required/><small>{item.day}</small><strong>{item.date}</strong></label>)}</div>
-            <div className="timeChoices">{['Morning · 8–11', 'Midday · 11–2', 'Afternoon · 2–5'].map((item) => <label className={time === item ? 'selected' : ''} key={item}><input type="radio" name="time" value={item} checked={time === item} onChange={() => setTime(item)} required/><span>{item}</span></label>)}</div>
-          </fieldset>
-
-          <fieldset>
-            <legend><b>04</b><span>Your details</span></legend>
-            <div className="detailsGrid"><label><span>Name</span><input value={name} onChange={(e) => setName(e.target.value)} required placeholder="Your full name" /></label><label><span>Postcode</span><input value={postcode} onChange={(e) => setPostcode(e.target.value)} required placeholder="e.g. LL32 8LD" /></label><label className="wide"><span>Vehicle make & model</span><input value={vehicle} onChange={(e) => setVehicle(e.target.value)} required placeholder="e.g. BMW 3 Series" /></label></div>
-          </fieldset>
+          {SCHEDULING_ENABLED && <>
+            <fieldset>
+              <legend><b>03</b><span>Pick a preferred date</span></legend>
+              <div className="dateScroller">{dates.map((item) => <label className={date === item.value ? 'selected' : ''} key={item.value}><input type="radio" name="date" value={item.value} checked={date === item.value} onChange={() => setDate(item.value)} required/><small>{item.day}</small><strong>{item.date}</strong></label>)}</div>
+              <div className="timeChoices">{['Morning · 8–11', 'Midday · 11–2', 'Afternoon · 2–5'].map((item) => <label className={time === item ? 'selected' : ''} key={item}><input type="radio" name="time" value={item} checked={time === item} onChange={() => setTime(item)} required/><span>{item}</span></label>)}</div>
+            </fieldset>
+            <fieldset>
+              <legend><b>04</b><span>Your details</span></legend>
+              <div className="detailsGrid"><label><span>Name</span><input value={name} onChange={(e) => setName(e.target.value)} required placeholder="Your full name" /></label><label><span>Postcode</span><input value={postcode} onChange={(e) => setPostcode(e.target.value)} required placeholder="e.g. LL32 8LD" /></label><label className="wide"><span>Vehicle make & model</span><input value={vehicle} onChange={(e) => setVehicle(e.target.value)} required placeholder="e.g. BMW 3 Series" /></label></div>
+            </fieldset>
+          </>}
         </div>
 
         <aside className="bookingSummary">
-          <p className="summaryLabel">YOUR BOOKING</p>
+          <p className="summaryLabel">YOUR ENQUIRY</p>
           <h2>{selectedService?.name || 'Select a service'}</h2>
-          <dl><div><dt>Vehicle</dt><dd>{selectedSize?.name || 'Not selected'}</dd></div><div><dt>Date</dt><dd>{selectedDate?.date || 'Not selected'}</dd></div><div><dt>Time</dt><dd>{time || 'Not selected'}</dd></div></dl>
+          <dl><div><dt>Vehicle</dt><dd>{selectedSize?.name || 'Not selected'}</dd></div>{SCHEDULING_ENABLED && <><div><dt>Date</dt><dd>{selectedDate?.date || 'Not selected'}</dd></div><div><dt>Time</dt><dd>{time || 'Not selected'}</dd></div></>}</dl>
           <div className="total"><span>Estimated total</span><strong>{price ? `£${price}` : '—'}</strong></div>
-          <button type="submit">Send booking request <span>→</span></button>
-          <small className="summaryNote">No payment is taken yet. Tyler will confirm your slot and send payment details.</small>
+          <button type="submit">Message Tyler on WhatsApp <span>→</span></button>
+          <small className="summaryNote">WhatsApp will open with your choices and a ready-written availability enquiry. Simply review it and press Send.</small>
           <a href="tel:+447301847820">Prefer to call? +44 7301 847820</a>
         </aside>
       </form>
