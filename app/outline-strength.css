@@ -1,0 +1,17 @@
+h1 em,
+.sectionHead h2 em,
+.proofCopy h2 em,
+.owner h2 em,
+.book h2 em {
+  -webkit-text-stroke-width: 2px;
+}
+
+@media (max-width: 640px) {
+  h1 em,
+  .sectionHead h2 em,
+  .proofCopy h2 em,
+  .owner h2 em,
+  .book h2 em {
+    -webkit-text-stroke-width: 1.5px;
+  }
+}
